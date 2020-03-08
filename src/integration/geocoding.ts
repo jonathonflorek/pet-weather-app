@@ -3,7 +3,7 @@ export interface LatLng {
     lng: number;
 }
 
-export async function geocode(address: string): Promise<LatLng> {
+export async function geocode(address: string): Promise<LatLng | undefined> {
     return {
         lat: 50.45008,
         lng: -104.6178,

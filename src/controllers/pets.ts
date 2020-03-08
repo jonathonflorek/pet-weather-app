@@ -11,6 +11,10 @@ export async function getPets(_: express.Request, res: express.Response) {
     res.render('pets/index', { pets });
 }
 
+export async function getPet(req: express.Request, res: express.Response) {
+    const pet = await petShelterApi.getOne(req.params.petid);
+}
+
 export async function getCreatePet(_: express.Request, res: express.Response) {
     res.render('pets/create', {
         name: '',

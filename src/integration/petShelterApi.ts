@@ -24,8 +24,8 @@ export async function getAll(): Promise<Pet[]> {
     return [mysty];
 }
 
-export async function getOne(id: number): Promise<Pet | undefined> {
-    if (id === 0) {
+export async function getOne(id: string): Promise<Pet | undefined> {
+    if (id === '0') {
         return mysty;
     }
     return undefined;
