@@ -9,5 +9,5 @@ export interface LatLng {
 export async function isItRaining({ lat, lng }: LatLng): Promise<boolean> {
     // usage documented in https://darksky.net/dev/docs#forecast-request
     const response = await axios.get(`${darkSkyUrl}/${lat},${lng}`);
-    return response.data.currently.precipProbability || 0 > 0.5;
+    return (response.data.currently.precipProbability || 0) > 0.5;
 }
