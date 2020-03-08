@@ -4,9 +4,16 @@
     <% include ../navigation %>
     
     <% if(isUmbrellaNeeded){ %>
-        Yup! It looks like <%= name %> is going to need one in <%= location %>.
+    
+    <h1 class="title is-1">Yup!</h1>
+    <p>It looks like <%= name %> is going to need one in <%= location %>.</p>
+
     <% }else{ %>
-        Nope! It looks like <%= name %> is not going to need one in <%= location %>.
+
+        
+    <h1 class="title is-1">Nope!</h1>
+    <p>It looks like <%= name %> is not going to need one in <%= location %>.</p>
+
     <% } %>
 
     <a href="/">Lookup a different pet</a>
