@@ -18,7 +18,7 @@ const mysty: Pet = {
         type: 'Point',
         coordinates: [-104.6178, 50.45008],
     },
-}
+};
 
 export async function getAll(): Promise<Pet[]> {
     return [mysty];
