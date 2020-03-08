@@ -9,7 +9,7 @@
   "author": "minwook-shin",
   "license": "GPL-3.0",
   "scripts": {
-    "start": "npm run serve",
+    "start": "npm run build && npm run serve",
     "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets",
     "serve": "node dist/server.js",
     "test": "jest --forceExit --coverage --verbose",
