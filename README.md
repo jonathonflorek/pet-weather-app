@@ -6,97 +6,30 @@ The Pet Weather App of the Pet Weather Programming Take Home Challenge.
 
 Based on the [TypeScript + Express + ejs + Node.js Starter with bulma.io](https://github.com/minwook-shin/typescript-express-ejs-node-starter)
 
-TypeScript Express ejs template starter using Microsoft's TypeScript-Node-Starter.
+## How To Develop
 
-include bulma.io (open source CSS framework).
+When running locally, the server is launched with environment variables provided in the `/.env` file. A sample is provided in `/examples`.
 
-![image](https://user-images.githubusercontent.com/820883/36764267-abbdb7f8-1be0-11e8-9678-2a9ea448d7f8.png)
+Key NPM scripts:
+- `npm start`: starts the built app without any fuss (or environment variables)
+- `npm run start:dev`: builds and starts with environment variables from `/.env`
+- `npm run build`: builds the project
 
-# Pre-reqs
-To build and run this app locally you will need a few things:
-- Install [Node.js](https://nodejs.org/en/)
-- Install IDE or editor
+## Deploying Locally
 
-# Getting started
-- Download the repository
+- clone the repository
+- ensure `/.env` exists and defines the environment variables described in `/examples/.env`
+- run `npm install`
+- run `npm run start:dev` to build and run
 
-- Install dependencies
+## Deploying to Heroku
+
 ```
-npm install
+heroku create
+git push heroku master
+heroku config:set PETSHELTERAPI_URL=<your-pet-shelter-api-url>
+heroku config:set DARKSKY_URL=https://api.darksky.net/forekast/<your-darksky-key>
+heroku config:set GOOGLE_GEOCODING_KEY=<your-google-geocoding-key>
 ```
-- Build and run the project
-```
-npm run build
-npm start
-```
-
-Finally, navigate to `http://localhost:3000` and you should see the template being served and rendered locally!
-
-# Deploying the app
-
-### Build the app
-
-- execute `npm run build` from a terminal window
-
-## Project Structure
-The most obvious difference in a TypeScript + Node project is the folder structure.
-In a TypeScript project, it's best to have separate _source_  and _distributable_ files.
-TypeScript (`.ts`) files live in your `src` folder and after compilation are output as JavaScript (`.js`) in the `dist` folder.
-The `test` and `views` folders remain top level as expected. 
-
-The full folder structure of this app is explained below:
-
-> **Note!** Make sure you have already built the app using `npm run build`
-
-| Name | Description |
-| ------------------------ | --------------------------------------------------------------------------------------------- |
-| **.vscode**              | Contains VS Code specific settings                                                            |
-| **dist**                 | Contains the distributable (or output) from your TypeScript build. This is the code you ship  |
-| **node_modules**         | Contains all your npm dependencies                                                            |
-| **src**                  | Contains your source code that will be compiled to the dist dir                               |
-| **src/controllers**      | Controllers define functions that respond to various http requests                            |
-| **src/public**           | Static assets that will be used client side                                                   |
-| **src**/server.ts        | Entry point to your express app                                                               |
-| **test**                 | Contains your tests. Seperate from source because there is a different build process.         |
-| **views**                | Views define how your app renders on the client. In this case we're using pug                 |
-| .travis.yml              | Used to configure Travis CI build                                                             |
-| .copyStaticAssets.ts     | Build script that copies images, fonts, and JS libs to the dist folder                        |
-| jest.config.js           | Used to configure Jest                                                                        |
-| package.json             | File that contains npm dependencies as well as [build scripts](#what-if-a-library-isnt-on-definitelytyped)                          |
-| tsconfig.json            | Config settings for compiling server code written in TypeScript                               |
-| tslint.json              | Config settings for TSLint code style checking                                                |
-
-### Running the build
-All the different build steps are orchestrated via [npm scripts](https://docs.npmjs.com/misc/scripts).
-Npm scripts basically allow us to call (and chain) terminal commands via npm.
-This is nice because most JavaScript tools have easy to use command line utilities allowing us to not need grunt or gulp to manage our builds.
-If you open `package.json`, you will see a `scripts` section with all the different scripts you can call.
-To call a script, simply run `npm run <script-name>` from the command line.
-You'll notice that npm scripts can call each other which makes it easy to compose complex builds out of simple individual build scripts.
-Below is a list of all the scripts this template has available:
-
-
-| Npm Script | Description |
-| ------------------------- | ------------------------------------------------------------------------------------------------- |
-| `start`                   | Does the same as 'npm run serve'. Can be invoked with `npm start`                                 |
-| `build`                   | Full build. Runs ALL build tasks (`build-sass`, `build-ts`, `tslint`, `copy-static-assets`)       |
-| `serve`                   | Runs node on `dist/server.js` which is the apps entry point                                       |
-| `test`                    | Runs tests using Jest test runner                                                                 |
-| `tslint`                  | Runs TSLint on project files                                                                       |
-
-
 
 This project expects certain environment variables to be provided in a `.env` file. Alternatively, run `node dist/server.js` directly with the environment variables specified in the environment. An example `.env` file is provided in `examples/.env`.
-
-### Running tests
-Simply run `npm run test`.
-Note this will also generate a coverage report.
-
-### Running TSLint
-```
-npm run build   // runs full build including TSLint
-npm run tslint  // runs only TSLint
-```
-
-# Hackathon Starter Project
-A majority of this quick start's content was inspired or adapted from Sahat's excellent [Hackathon Starter project](https://github.com/sahat/hackathon-starter).
