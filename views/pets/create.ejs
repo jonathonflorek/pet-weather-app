@@ -4,20 +4,30 @@
     <% include ../navigation %>
     <form method="POST">
         <label for="name">Name:</label>
-        <input type="text" name="name"/><br/>
+        <input type="text" id="name" name="name" value="<%= name %>"/><br/>
 
         <label for="type">Type:</label>
-        <select name="type"></select><br/>
+        <select id="type" name="type">
+        <% for(const petType in breedsByType){ %>
+            <option <% if(petType===type){ %>selected<% } %>><%= petType %></option>
+        <% } %>
+        </select><br/>
 
         <label for="breed">Breed:</label>
-        <select name="breed"></select><br/>
+        <select id="breed" name="breed">
+        <% for (const petBreed of breedsByType[type]){ %>
+            <option <% if(petBreed===breed) { %>selected<% } %>><%= petBreed %></option>
+        <% } %>
+        </select><br/>
 
         <label for="location">Location:</label>
-        <input type="text" name="location"/><br/>
+        <input type="text" id="location" name="location" value="<%= location %>"/><br/>
 
         <input type="submit" value="Add my pet!"/>
     </form>
     <% include ../footer %>
+    <script>breedsByType=<%-JSON.stringify(breedsByType)%></script>
+    <script src="/js/petsCreate.js"></script>
 </body>
 
 </html>
