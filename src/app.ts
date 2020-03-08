@@ -1,4 +1,5 @@
 import express from 'express';
+import 'express-async-errors'; // calls next() on async errors
 import compression from 'compression';  // compresses requests
 import bodyParser from 'body-parser';
 import path from 'path';
@@ -20,6 +21,7 @@ app.use(
 );
 
 app.get('/', petsController.petsIndex);
+app.get('/map', petsController.petsMap);
 app.get('/pets/new', petsController.getCreatePet);
 app.post('/pets/new', petsController.postCreatePet);
 app.get('/pets/notfound', petsController.notFound);

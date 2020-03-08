@@ -12,6 +12,12 @@ export async function notFound(_: express.Request, res: express.Response) {
     res.render('pets/notfound');
 }
 
+export async function petsMap(_: express.Request, res: express.Response) {
+    const pets = await petShelterApi.getAll();
+    const [lng, lat] = pets.length ? pets[0].location.coordinates : [-104.618896, 50.445210];
+    res.render('pets/map', { pets, center: { lng, lat } });
+}
+
 export async function petsIndex(_: express.Request, res: express.Response) {
     const pets = await petShelterApi.getAll();
     res.render('pets/index', { pets });
