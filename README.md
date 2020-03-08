@@ -1,4 +1,10 @@
-# TypeScript + Express + ejs + Node.js Starter with bulma.io
+# Pet Weather App
+
+https://github.com/jonathonflorek/pet-weather-app
+
+The Pet Weather App of the Pet Weather Programming Take Home Challenge.
+
+Based on the [TypeScript + Express + ejs + Node.js Starter with bulma.io](https://github.com/minwook-shin/typescript-express-ejs-node-starter)
 
 TypeScript Express ejs template starter using Microsoft's TypeScript-Node-Starter.
 
@@ -79,6 +85,8 @@ Below is a list of all the scripts this template has available:
 | `tslint`                  | Runs TSLint on project files                                                                       |
 
 
+
+This project expects certain environment variables to be provided in a `.env` file. Alternatively, run `node dist/server.js` directly with the environment variables specified in the environment. An example `.env` file is provided in `examples/.env`.
 
 ### Running tests
 Simply run `npm run test`.
