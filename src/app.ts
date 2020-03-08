@@ -2,6 +2,7 @@ import express from 'express';
 import compression from 'compression';  // compresses requests
 import bodyParser from 'body-parser';
 import path from 'path';
+import './integration/axiosConfig';
 
 import * as homeController from './controllers/home';
 import * as petsController from './controllers/pets';

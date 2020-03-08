@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { petShelterApiUrl } from '../config';
+
 export interface Pet {
     id: number;
     name: string;
@@ -9,31 +12,31 @@ export interface Pet {
     };
 }
 
-const mysty: Pet = {
-    id: 0,
-    name: 'Mysty',
-    type: 'Dog',
-    breed: 'Basset',
-    location: {
-        type: 'Point',
-        coordinates: [-104.6178, 50.45008],
-    },
-};
-
 export async function getAll(): Promise<Pet[]> {
-    return [mysty];
+    const response = await axios.get(petShelterApiUrl + '/pets');
+    return response.data.pets;
 }
 
-export async function getOne(id: string): Promise<Pet | undefined> {
-    if (id === '0') {
-        return mysty;
+export async function getOne(id: string): Promise<Pet | 404> {
+    const response = await axios.get(petShelterApiUrl + '/pets/' + id);
+    switch (response.status) {
+        case 200:
+            return response.data.pet;
+        case 404:
+            return 404;
+        default:
+            throw new Error(`unexpected status code from pets shelter api: ${response.status}`);
     }
-    return undefined;
 }
 
 export async function addOne(pet: Omit<Pet, 'id'>): Promise<Pet | 409> {
-    return {
-        ...pet,
-        id: 0,
-    };
+    const response = await axios.post(petShelterApiUrl + '/pets', { pet });
+    switch (response.status) {
+        case 201:
+            return response.data.pet;
+        case 409:
+            return 409;
+        default:
+            throw new Error(`unexpected status code from pets shelter api: ${response.status}`);
+    }
 }

@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npm run build && npm run serve",
     "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets",
-    "serve": "node dist/server.js",
+    "serve": "env-cmd node dist/server.js",
     "test": "jest --forceExit --coverage --verbose",
     "build-ts": "tsc",
     "build-sass": "node-sass src/public/css/main.scss dist/public/css/main.css",
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "async": "^2.6.0",
+    "axios": "^0.19.2",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "bootstrap-sass": "^3.3.7",
@@ -49,6 +50,7 @@
     "@types/winston": "^2.3.7",
     "chai": "^4.1.2",
     "concurrently": "^3.5.1",
+    "env-cmd": "^10.1.0",
     "jest": "^25.1.0",
     "node-sass": "^4.7.2",
     "nodemon": "^1.13.0",

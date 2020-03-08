@@ -19,7 +19,7 @@ export async function petsIndex(_: express.Request, res: express.Response) {
 
 export async function getPet(req: express.Request, res: express.Response) {
     const pet = await petShelterApi.getOne(req.params.petid);
-    if (!pet) {
+    if (pet === 404) {
         return res.redirect('/pets/notfound');
     }
     const [lng, lat] = pet.location.coordinates;
