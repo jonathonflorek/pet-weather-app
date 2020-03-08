@@ -2,22 +2,27 @@
 
 <body>
     <% include ../navigation %>
+
+    <% for(const error of errors || []) %>
+    <div>ERROR: <%= error %></div>
+    <% } %>
+
     <form method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="<%= name %>"/><br/>
 
         <label for="type">Type:</label>
         <select id="type" name="type">
-        <% for(const petType in breedsByType){ %>
+            <% for(const petType in breedsByType){ %>
             <option <% if(petType===type){ %>selected<% } %>><%= petType %></option>
-        <% } %>
+            <% } %>
         </select><br/>
 
         <label for="breed">Breed:</label>
         <select id="breed" name="breed">
-        <% for (const petBreed of breedsByType[type]){ %>
+            <% for (const petBreed of breedsByType[type]){ %>
             <option <% if(petBreed===breed) { %>selected<% } %>><%= petBreed %></option>
-        <% } %>
+            <% } %>
         </select><br/>
 
         <label for="location">Location:</label>

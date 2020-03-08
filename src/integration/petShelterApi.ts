@@ -31,6 +31,9 @@ export async function getOne(id: string): Promise<Pet | undefined> {
     return undefined;
 }
 
-export async function addOne(pet: Omit<Pet, 'id'>): Promise<Pet | string> {
-    return 'not implemented';
+export async function addOne(pet: Omit<Pet, 'id'>): Promise<Pet | 409> {
+    return {
+        ...pet,
+        id: 0,
+    };
 }

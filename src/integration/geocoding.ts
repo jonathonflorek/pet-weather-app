@@ -10,6 +10,6 @@ export async function geocode(address: string): Promise<LatLng | undefined> {
     };
 }
 
-export async function reverseGeocode(location: LatLng): Promise<string> {
+export async function reverseGeocode({ lat, lng }: LatLng): Promise<string> {
     return 'Regina, SK';
 }

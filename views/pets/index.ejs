@@ -2,21 +2,11 @@
 
 <body>
     <% include ../navigation %>
-    <form method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name"/><br/>
+    
+    <% for(const pet of pets){ %>
+    
+    <% } %>
 
-        <label for="type">Type:</label>
-        <select name="type"></select><br/>
-
-        <label for="breed">Breed:</label>
-        <select name="breed"></select><br/>
-
-        <label for="location">Location:</label>
-        <input type="text" name="location"/><br/>
-
-        <input type="submit" value="Add my pet!"/>
-    </form>
     <% include ../footer %>
 </body>
 
