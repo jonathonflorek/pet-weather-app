@@ -3,9 +3,28 @@
 <body>
     <% include ../navigation %>
     
-    <% for(const pet of pets){ %>
-    
-    <% } %>
+    Does My Pet Need An Umbrella?
+
+    Select a pet to find out.
+
+    <a href="/pets/new">Add a new pet</a>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Breed</th>
+            <th></th>
+        </tr>
+        <% for(const pet of pets){ %>
+        <tr>
+            <td><%= pet.name %></td>
+            <td><%= pet.type %></td>
+            <td><%= pet.breed %></td>
+            <td><a href="/pets/<%= pet.id %>">view</a></td>
+        </tr>
+        <% } %>
+    </table>
 
     <% include ../footer %>
 </body>

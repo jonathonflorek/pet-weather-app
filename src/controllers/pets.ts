@@ -8,7 +8,11 @@ const breedsByType = {
     Cat: ['Maine Coon', 'Persian'],
 };
 
-export async function getPets(_: express.Request, res: express.Response) {
+export async function notFound(_: express.Request, res: express.Response) {
+    res.render('pets/notfound');
+}
+
+export async function petsIndex(_: express.Request, res: express.Response) {
     const pets = await petShelterApi.getAll();
     res.render('pets/index', { pets });
 }
@@ -16,15 +20,13 @@ export async function getPets(_: express.Request, res: express.Response) {
 export async function getPet(req: express.Request, res: express.Response) {
     const pet = await petShelterApi.getOne(req.params.petid);
     if (!pet) {
-        return res.status(404).send();
+        return res.redirect('/pets/notfound');
     }
     const [lng, lat] = pet.location.coordinates;
     const isUmbrellaNeeded = await isItRainingApi.isItRaining({ lat, lng });
     const location = await geocodingApi.reverseGeocode({ lat, lng });
     res.render('pets/view', {
         name: pet.name,
-        breed: pet.breed,
-        type: pet.type,
         location,
         isUmbrellaNeeded,
     });
@@ -37,6 +39,7 @@ export async function getCreatePet(_: express.Request, res: express.Response) {
         type: 'Dog',
         breed: 'Beagle',
         breedsByType,
+        errors: [],
     });
 }
 

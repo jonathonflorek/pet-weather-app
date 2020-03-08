@@ -19,8 +19,10 @@ app.use(
   express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 })
 );
 
-app.get('/', homeController.index);
+app.get('/', petsController.petsIndex);
 app.get('/pets/new', petsController.getCreatePet);
 app.post('/pets/new', petsController.postCreatePet);
+app.get('/pets/notfound', petsController.notFound);
+app.get('/pets/:petid', petsController.getPet);
 
 export default app;

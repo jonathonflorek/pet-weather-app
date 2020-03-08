@@ -1,0 +1,17 @@
+<% include ../core %>
+
+<body>
+    <% include ../navigation %>
+    
+    <% if(isUmbrellaNeeded){ %>
+        Yup! It looks like <%= name %> is going to need one in <%= location %>.
+    <% }else{ %>
+        Nope! It looks like <%= name %> is not going to need one in <%= location %>.
+    <% } %>
+
+    <a href="/">Lookup a different pet</a>
+    
+    <% include ../footer %>
+</body>
+
+</html>
