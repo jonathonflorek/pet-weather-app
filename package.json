@@ -9,9 +9,9 @@
   "author": "minwook-shin",
   "license": "GPL-3.0",
   "scripts": {
-    "start": "npm run build && npm run serve",
+    "start:dev": "npm run build && env-cmd npm start",
+    "start": "node dist/server.js",
     "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets",
-    "serve": "env-cmd node dist/server.js",
     "test": "jest --forceExit --coverage --verbose",
     "build-ts": "tsc",
     "build-sass": "node-sass src/public/css/main.scss dist/public/css/main.css",
